@@ -25,11 +25,17 @@ func Rotate(s []string, k int) error {
 	}
 
 	if len(s) <= 0 {
-		return errors.New("empty s")
+		// Nothing to do
+		return nil
 	}
 
 	// Do not rotate more than necessary
 	k = k % len(s)
+
+	if k == 0 {
+		// Nothing to do
+		return nil
+	}
 
 	split := len(s) - k
 	Reverse(s[:split])
