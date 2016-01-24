@@ -1,78 +1,35 @@
-// Rotates an array k positions (default k=1).
-// Memory consumption: O(1)
-// Time: O(n), n = len(array)
-package main
+// Provides functions to rotate and reverse slices in place, using O(1) and
+// O(n) time, with n = the slice length.
+package rotate
 
 import (
 	"errors"
-	"flag"
-	"fmt"
-	"os"
 )
-
-// errors
-const (
-	_ = iota
-	EMPTY_ARRAY
-	ERROR_ROTATING
-)
-
-var k int
-
-func init() {
-	flag.IntVar(&k, "r", 1, "how many positions the array will be rotated")
-}
-
-func usage() {
-	fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
-	fmt.Fprintf(os.Stderr, "\trotate_array [flags] e1 e2 ... # Rotates the array defined as [e1 e2 ...]\n")
-	fmt.Fprintf(os.Stderr, "Flags:\n")
-	flag.PrintDefaults()
-}
-
-func main() {
-	flag.Usage = usage
-	flag.Parse()
-
-	size := flag.NArg()
-	if size <= 0 {
-		fmt.Fprintln(os.Stderr, "Empty array.")
-		os.Exit(EMPTY_ARRAY)
-	}
-
-	array := flag.Args()
-	err := rotate(array, k)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error rotating: %v.\n", err)
-		os.Exit(ERROR_ROTATING)
-	}
-	fmt.Println(array)
-}
 
 // rotates slice in place k positions
 // Memory: O(1)
 // Time: O(n), n = len(array)
-func rotate(array []string, k int) error {
+func Rotate(s []string, k int) error {
 	if k < 0 {
 		return errors.New("invalid number of positions to rotate")
 	}
 
-	if len(array) <= 0 {
-		return errors.New("empty array")
+	if len(s) <= 0 {
+		return errors.New("empty s")
 	}
 
 	// Do not rotate more than necessary
-	k = k % len(array)
+	k = k % len(s)
 
-	split := len(array) - k
-	reverse(array[:split])
-	reverse(array[split:])
-	reverse(array)
+	split := len(s) - k
+	Reverse(s[:split])
+	Reverse(s[split:])
+	Reverse(s)
 	return nil
 }
 
 // reverses a slice in place.
-func reverse(a []string) {
+func Reverse(a []string) {
 	i, j := 0, len(a)-1
 	for i < j {
 		a[i], a[j] = a[j], a[i]
