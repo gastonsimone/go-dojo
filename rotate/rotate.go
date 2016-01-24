@@ -6,6 +6,16 @@ import (
 	"errors"
 )
 
+// reverses a slice in place.
+func Reverse(a []string) {
+	i, j := 0, len(a)-1
+	for i < j {
+		a[i], a[j] = a[j], a[i]
+		i++
+		j--
+	}
+}
+
 // rotates slice in place k positions
 // Memory: O(1)
 // Time: O(n), n = len(array)
@@ -26,14 +36,4 @@ func Rotate(s []string, k int) error {
 	Reverse(s[split:])
 	Reverse(s)
 	return nil
-}
-
-// reverses a slice in place.
-func Reverse(a []string) {
-	i, j := 0, len(a)-1
-	for i < j {
-		a[i], a[j] = a[j], a[i]
-		i++
-		j--
-	}
 }
