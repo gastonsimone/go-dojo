@@ -38,7 +38,7 @@ func Evalrpn(tokens []string) (float64, error) {
 		case "+":
 			stack.push(x + y)
 		case "-":
-			stack.push(x - y)
+			stack.push(y - x)
 		case "*":
 			stack.push(x * y)
 		case "/":
