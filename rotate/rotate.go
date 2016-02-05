@@ -15,10 +15,10 @@ func Reverse(a []string) {
 // rotates slice in place k positions
 // Memory: O(1)
 // Time: O(n), n = len(array)
-func Rotate(s []string, k int) error {
+func Rotate(s []string, k int) {
 	if len(s) <= 0 {
 		// Nothing to do
-		return nil
+		return
 	}
 
 	// Do not rotate more than necessary
@@ -27,7 +27,7 @@ func Rotate(s []string, k int) error {
 	switch {
 	case k == 0:
 		// Nothing to do
-		return nil
+		return
 	case k < 0:
 		// Convert a left-rotate to a right-rotate
 		k += len(s)
@@ -37,5 +37,5 @@ func Rotate(s []string, k int) error {
 	Reverse(s[:split])
 	Reverse(s[split:])
 	Reverse(s)
-	return nil
+	return
 }

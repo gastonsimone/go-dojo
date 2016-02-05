@@ -61,19 +61,13 @@ func TestReverseOdd(t *testing.T) {
 }
 
 func TestRotateEmpty(t *testing.T) {
-	err := Rotate(nil, 1)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(nil, 1)
 }
 
 func TestRotateOneLeft(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
-	err := Rotate(a, -1)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, -1)
 
 	want := []string{"2", "3", "4", "5", "6", "7", "1"}
 	if !areEqual(a, want) {
@@ -84,10 +78,7 @@ func TestRotateOneLeft(t *testing.T) {
 func TestRotateNothing(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
-	err := Rotate(a, 0)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, 0)
 
 	want := []string{"1", "2", "3", "4", "5", "6", "7"}
 	if !areEqual(a, want) {
@@ -98,10 +89,7 @@ func TestRotateNothing(t *testing.T) {
 func TestRotateOne(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
-	err := Rotate(a, 1)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, 1)
 
 	want := []string{"7", "1", "2", "3", "4", "5", "6"}
 	if !areEqual(a, want) {
@@ -112,10 +100,7 @@ func TestRotateOne(t *testing.T) {
 func TestRotateAllButOne(t *testing.T) {
 	a := []string{"7", "1", "2", "3", "4", "5", "6"}
 
-	err := Rotate(a, 6)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, 6)
 
 	want := []string{"1", "2", "3", "4", "5", "6", "7"}
 	if !areEqual(a, want) {
@@ -126,10 +111,7 @@ func TestRotateAllButOne(t *testing.T) {
 func TestRotateEverything(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
-	err := Rotate(a, 7)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, 7)
 
 	want := []string{"1", "2", "3", "4", "5", "6", "7"}
 	if !areEqual(a, want) {
@@ -140,10 +122,7 @@ func TestRotateEverything(t *testing.T) {
 func TestRotateMoreThanLength(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
-	err := Rotate(a, 10)
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
+	Rotate(a, 10)
 
 	want := []string{"5", "6", "7", "1", "2", "3", "4"}
 	if !areEqual(a, want) {
