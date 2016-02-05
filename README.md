@@ -19,7 +19,8 @@ for fun and personal training.
 
 **Description:**
 Rotate an array of `n` elements to the right by `k` steps.
-For example, with `n = 7` and `k = 3`, the array `[1,2,3,4,5,6,7]` is rotated to `[5,6,7,1,2,3,4]`.
+For example, with `n = 7` and `k = 3`, the array `[1,2,3,4,5,6,7]` is rotated
+to `[5,6,7,1,2,3,4]`.
 
 **Solution**: [rotate](/rotate).
 
@@ -34,3 +35,12 @@ an operator. For example:
 * `["2", "3", "^"]` is `2 ^ 3 = 8`
 
 **Solution**: [rpn](/rpn).
+
+#### Isomorphic strings
+
+**Description:**
+Given two strings `s` and `t`, determine if they are isomorphic. Two strings are
+isomorphic if the characters in `s` can be replaced to get `t`.
+For example, "egg" and "add" are isomorphic, but "foo" and "bar" are not.
+
+**Solution**: [isomorphic](/isomorphic).
