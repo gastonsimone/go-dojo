@@ -67,12 +67,17 @@ func TestRotateEmpty(t *testing.T) {
 	}
 }
 
-func TestRotateLeft(t *testing.T) {
+func TestRotateOneLeft(t *testing.T) {
 	a := []string{"1", "2", "3", "4", "5", "6", "7"}
 
 	err := Rotate(a, -1)
-	if err == nil {
-		t.Fatal("Expected error")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	want := []string{"2", "3", "4", "5", "6", "7", "1"}
+	if !areEqual(a, want) {
+		t.Fatalf("got %v, want %v", a, want)
 	}
 }
 

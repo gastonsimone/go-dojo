@@ -2,10 +2,6 @@
 // O(n) time, with n = the slice length.
 package rotate
 
-import (
-	"errors"
-)
-
 // reverses a slice in place.
 func Reverse(a []string) {
 	i, j := 0, len(a)-1
@@ -20,10 +16,6 @@ func Reverse(a []string) {
 // Memory: O(1)
 // Time: O(n), n = len(array)
 func Rotate(s []string, k int) error {
-	if k < 0 {
-		return errors.New("invalid number of positions to rotate")
-	}
-
 	if len(s) <= 0 {
 		// Nothing to do
 		return nil
@@ -32,9 +24,13 @@ func Rotate(s []string, k int) error {
 	// Do not rotate more than necessary
 	k = k % len(s)
 
-	if k == 0 {
+	switch {
+	case k == 0:
 		// Nothing to do
 		return nil
+	case k < 0:
+		// Convert a left-rotate to a right-rotate
+		k += len(s)
 	}
 
 	split := len(s) - k
