@@ -42,10 +42,6 @@ func main() {
 	}
 
 	array := flag.Args()
-	err := rotate.Rotate(array, k)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error rotating: %v.\n", err)
-		os.Exit(ERROR_ROTATING)
-	}
+	rotate.Rotate(array, k)
 	fmt.Println(array)
 }
