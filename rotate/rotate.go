@@ -1,16 +1,8 @@
-// Provides functions to rotate and reverse slices in place, using O(1) and
+// Provides function to rotate slices in place, using O(1) and
 // O(n) time, with n = the slice length.
 package rotate
 
-// reverses a slice in place.
-func Reverse(a []string) {
-	i, j := 0, len(a)-1
-	for i < j {
-		a[i], a[j] = a[j], a[i]
-		i++
-		j--
-	}
-}
+import "github.com/gastonsimone/go-dojo/strarray"
 
 // rotates slice in place k positions
 // Memory: O(1)
@@ -34,8 +26,8 @@ func Rotate(s []string, k int) {
 	}
 
 	split := len(s) - k
-	Reverse(s[:split])
-	Reverse(s[split:])
-	Reverse(s)
+	strarray.Reverse(s[:split])
+	strarray.Reverse(s[split:])
+	strarray.Reverse(s)
 	return
 }
