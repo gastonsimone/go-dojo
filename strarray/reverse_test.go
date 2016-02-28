@@ -45,3 +45,11 @@ func TestReverseOdd(t *testing.T) {
 		t.Fatalf("got %v, want %v", a, want)
 	}
 }
+
+func BenchmarkReverse(b *testing.B) {
+	a := []string{"1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Reverse(a)
+	}
+}

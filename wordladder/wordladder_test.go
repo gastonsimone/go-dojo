@@ -85,3 +85,33 @@ func TestWordLadderLargeConversion(t *testing.T) {
 		t.Fatalf("got %v, want %v", ladder, want)
 	}
 }
+
+func BenchmarkLoadWordDict(b *testing.B) {
+	const input = "one two three four five six seven eight nine ten eleven"
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		scanner := bufio.NewScanner(strings.NewReader(input))
+		scanner.Split(bufio.ScanWords)
+		LoadWordDict(scanner)
+	}
+}
+
+func BenchmarkWordLadder(b *testing.B) {
+	file, err := os.Open("/usr/share/dict/words")
+	if err != nil {
+		b.Fatal(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	var dict WordSet
+	if dict, err = LoadWordDict(scanner); err != nil {
+		b.Fatalf("error loading dictionary: %v", err)
+	}
+
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		WordLadder("small", "large", dict)
+	}
+}

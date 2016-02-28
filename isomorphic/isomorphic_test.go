@@ -31,3 +31,9 @@ func TestNonIsomorphic(t *testing.T) {
 		t.Fatal("'foo' considered isomorphic with 'bar'")
 	}
 }
+
+func BenchmarkIsomorphic(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		AreIsomorphic("isomorphic", "economizer")
+	}
+}

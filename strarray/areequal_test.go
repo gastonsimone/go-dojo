@@ -44,3 +44,12 @@ func TestAreEqual(t *testing.T) {
 		t.Fatalf("%v not equal to %v", a, b)
 	}
 }
+
+func BenchmarkAreEqual(b *testing.B) {
+	s := []string{"one", "two", "three", "four", "five", "six", "seven", "eight"}
+	t := []string{"one", "two", "three", "four", "five", "six", "seven", "eight"}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		AreEqual(s, t)
+	}
+}

@@ -76,3 +76,11 @@ func TestEvalrpnBadTokeb(t *testing.T) {
 		t.Fatal("Expected error for unexpected token.")
 	}
 }
+
+func BenchmarkEvalrpn(b *testing.B) {
+	tokens := []string{"4", "13", "5", "/", "+", "10", "*"}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Evalrpn(tokens)
+	}
+}

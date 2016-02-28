@@ -74,3 +74,11 @@ func TestRotateMoreThanLength(t *testing.T) {
 		t.Fatalf("got %v, want %v", a, want)
 	}
 }
+
+func BenchmarkRotate(b *testing.B) {
+	a := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		Rotate(a, 9)
+	}
+}
