@@ -2,8 +2,9 @@ package wordladder
 
 import (
 	"bufio"
+	"errors"
+	"fmt"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/gastonsimone/go-dojo/strarray"
@@ -15,6 +16,10 @@ type WordSet map[string]bool
 // Loads a dictionary of words in memory and returns it as a 'WordSet'.
 // 'scanner' is is used as the source of words.
 func LoadWordDict(scanner *bufio.Scanner) (WordSet, error) {
+	if scanner == nil {
+		return nil, errors.New("nil scanner")
+	}
+
 	dict := make(WordSet)
 	isWord := regexp.MustCompile(`^\w+$`)
 
@@ -83,10 +88,7 @@ func WordLadder(start, end string, dict WordSet) []string {
 
 		for i, c := range chars {
 			for newc := 'a'; newc <= 'z'; newc++ {
-				newchar, err := strconv.Unquote(strconv.QuoteRune(newc))
-				if err != nil {
-					panic(err)
-				}
+				newchar := fmt.Sprintf("%c", newc)
 
 				if c == newchar {
 					continue
