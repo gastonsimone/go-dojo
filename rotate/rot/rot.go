@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/gastonsimone/go-dojo/rotate"
 )
@@ -44,11 +45,5 @@ func main() {
 	array := flag.Args()
 	rotate.Rotate(array, k)
 
-	for i, v := range array {
-		if i > 0 {
-			fmt.Print(" ")
-		}
-		fmt.Print(v)
-	}
-	fmt.Println()
+	fmt.Println(strings.Join(array, " "))
 }
