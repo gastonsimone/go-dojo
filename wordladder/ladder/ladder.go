@@ -87,5 +87,12 @@ func main() {
 	}
 
 	ladder := wordladder.WordLadder(start, end, dict)
-	fmt.Println(ladder)
+
+	for i, v := range ladder {
+		if i > 0 {
+			fmt.Print("\n")
+		}
+		fmt.Print(v)
+	}
+	fmt.Println()
 }
