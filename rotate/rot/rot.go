@@ -21,7 +21,7 @@ const (
 var k int
 
 func init() {
-	flag.IntVar(&k, "r", 1, "how many positions the array will be rotated")
+	flag.IntVar(&k, "r", 1, "how many positions the array will be rotated. Positive=right, negative=left.")
 }
 
 func usage() {
@@ -43,5 +43,12 @@ func main() {
 
 	array := flag.Args()
 	rotate.Rotate(array, k)
-	fmt.Println(array)
+
+	for i, v := range array {
+		if i > 0 {
+			fmt.Print(" ")
+		}
+		fmt.Print(v)
+	}
+	fmt.Println()
 }
