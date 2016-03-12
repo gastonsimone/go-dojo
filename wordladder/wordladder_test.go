@@ -2,7 +2,6 @@ package wordladder
 
 import (
 	"bufio"
-	"errors"
 	"os"
 	"strings"
 	"testing"
@@ -10,8 +9,8 @@ import (
 	"github.com/gastonsimone/go-dojo/strarray"
 )
 
-func TestLoadWordDict(t *testing.T) {
-	const input = "one two three four five"
+func TestWordLadderBasic(t *testing.T) {
+	const input = "a b c"
 	scanner := bufio.NewScanner(strings.NewReader(input))
 	scanner.Split(bufio.ScanWords)
 
@@ -21,28 +20,11 @@ func TestLoadWordDict(t *testing.T) {
 		t.Fatalf("error loading dictionary: %v", err)
 	}
 
-	if len(dict) != 5 {
-		t.Fatal("unexpected number of words in dictionary")
-	}
-}
+	ladder := WordLadder("a", "c", dict)
 
-type badReader struct {
-}
-
-func (r *badReader) Read(p []byte) (n int, err error) {
-	return 0, errors.New("bad reader")
-}
-
-func TestLoadWordDictBadReader(t *testing.T) {
-	scanner := bufio.NewScanner(&badReader{})
-	if _, err := LoadWordDict(scanner); err == nil {
-		t.Fatalf("expected error loading dictionary with bad reader")
-	}
-}
-
-func TestLoadWordDictNilScanner(t *testing.T) {
-	if _, err := LoadWordDict(nil); err == nil {
-		t.Fatal("no error with nil scanner")
+	want := []string{"a", "c"}
+	if !strarray.AreEqual(ladder, want) {
+		t.Fatalf("got %v, want %v", ladder, want)
 	}
 }
 
