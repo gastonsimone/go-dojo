@@ -1,10 +1,11 @@
-// Provides function to rotate slices in place, using O(1) and
+// Package rotate provides function to rotate slices in place, using O(1) and
 // O(n) time, with n = the slice length.
 package rotate
 
 import "github.com/gastonsimone/go-dojo/strarray"
 
-// rotates slice in place k positions
+// Rotate rotates slice in place k positions. If k>0, it rotates to the right.
+// If k<0 it rotates to the left.
 // Memory: O(1)
 // Time: O(n), n = len(array)
 func Rotate(s []string, k int) {

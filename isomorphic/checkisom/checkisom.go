@@ -14,7 +14,7 @@ import (
 // errors
 const (
 	_ = iota
-	INVALID_ARGS
+	InvalidArgs
 )
 
 func usage() {
@@ -29,7 +29,7 @@ func main() {
 	args := flag.Args()
 	if len(args) != 2 {
 		fmt.Fprintf(os.Stderr, "Expecting two strings as parameters.\n")
-		os.Exit(INVALID_ARGS)
+		os.Exit(InvalidArgs)
 	}
 
 	s := args[0]

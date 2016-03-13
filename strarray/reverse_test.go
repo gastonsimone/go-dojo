@@ -5,11 +5,11 @@ import (
 )
 
 func TestReverseEmpty(t *testing.T) {
-	var a []string = nil
+	var a []string
 
 	Reverse(a)
 
-	var want []string = nil
+	var want []string
 	if !AreEqual(a, want) {
 		t.Fatalf("got %v, want %v", a, want)
 	}

@@ -17,7 +17,7 @@ func AreEqual(s, t []string) bool {
 	return true
 }
 
-// reverses a slice in place.
+// Reverse reverses a slice in place.
 func Reverse(a []string) {
 	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
 		a[i], a[j] = a[j], a[i]

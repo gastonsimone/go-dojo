@@ -15,8 +15,7 @@ import (
 // errors
 const (
 	_ = iota
-	EMPTY_ARRAY
-	ERROR_ROTATING
+	EmptyArray
 )
 
 var k int
@@ -39,7 +38,7 @@ func main() {
 	size := flag.NArg()
 	if size <= 0 {
 		fmt.Fprintln(os.Stderr, "Empty array.")
-		os.Exit(EMPTY_ARRAY)
+		os.Exit(EmptyArray)
 	}
 
 	array := flag.Args()

@@ -1,4 +1,4 @@
-// Provides a Reverse Polish Notation (RPN) evaluator
+// Package rpn provides a Reverse Polish Notation (RPN) evaluator
 package rpn
 
 import (
@@ -11,15 +11,17 @@ import (
 
 var operators = "+-*/^!"
 
+// Evalrpn is a Reverse Polish Notation calculator.
+// It parses the tokens and returns the result.
 func Evalrpn(tokens []string) (float64, error) {
 	if len(tokens) <= 0 {
-		return 0, errors.New("no tokens to evaluate.")
+		return 0, errors.New("no tokens to evaluate")
 	}
 
 	var err error
 	var x, y float64
 
-	stack := NewStack()
+	stack := newOperandStack()
 	for i, t := range tokens {
 
 		if strings.Contains(operators, t) {
@@ -57,7 +59,7 @@ func Evalrpn(tokens []string) (float64, error) {
 	return stack.pop()
 }
 
-type Stack struct {
+type operandStack struct {
 	head *stacknode
 }
 
@@ -66,21 +68,21 @@ type stacknode struct {
 	next  *stacknode
 }
 
-func NewStack() *Stack {
-	return &Stack{}
+func newOperandStack() *operandStack {
+	return &operandStack{}
 }
 
-func (s *Stack) isEmpty() bool {
+func (s *operandStack) isEmpty() bool {
 	return (s.head == nil)
 }
 
-func (s *Stack) push(v float64) {
+func (s *operandStack) push(v float64) {
 	s.head = &stacknode{v, s.head}
 }
 
-func (s *Stack) pop() (float64, error) {
+func (s *operandStack) pop() (float64, error) {
 	if s.isEmpty() {
-		return 0, errors.New("cannot pop, stack is empty.")
+		return 0, errors.New("cannot pop, operand stack is empty")
 	}
 
 	popped := s.head

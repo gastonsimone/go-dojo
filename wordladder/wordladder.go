@@ -10,11 +10,11 @@ import (
 	"github.com/gastonsimone/go-dojo/strarray"
 )
 
-// Represents a dictionary of words in memory.
+// WordSet represents a dictionary of words in memory.
 type WordSet map[string]bool
 
-// Loads a dictionary of words in memory and returns it as a 'WordSet'.
-// 'scanner' is is used as the source of words.
+// LoadWordDict loads a dictionary of words in memory and returns it as
+// a 'WordSet'.  'scanner' is is used as the source of words.
 func LoadWordDict(scanner *bufio.Scanner) (WordSet, error) {
 	if scanner == nil {
 		return nil, errors.New("nil scanner")
@@ -62,6 +62,7 @@ func (q *queue) pop() *wordLadder {
 	return w
 }
 
+// WordLadder calculates the 'word ladder' between two words.
 // Given a 'start' word, an 'end' word, and a dictionary of words 'dict', finds
 // the shortest transformation sequence from 'start' to 'end', such that only
 // one letter can be changed at a time. Each intermediate word must exist in
@@ -123,7 +124,7 @@ func WordLadder(start, end string, dict WordSet) []string {
 // a slice of words, where the first word is the first word in the ladder, and
 // the last word is w.word.
 func (w *wordLadder) climbLadder() []string {
-	words := make([]string, 0)
+	var words []string
 	for ; w != nil; w = w.parent {
 		words = append(words, w.word)
 	}

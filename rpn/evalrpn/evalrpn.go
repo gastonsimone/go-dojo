@@ -12,8 +12,8 @@ import (
 // errors
 const (
 	_ = iota
-	ERROR_INVALID_ARGS
-	ERROR_EVALUATING
+	InvalidArgs
+	EvaluationError
 )
 
 func usage() {
@@ -28,14 +28,14 @@ func main() {
 	size := flag.NArg()
 	if size <= 0 {
 		fmt.Fprintln(os.Stderr, "No formula to evaluate.")
-		os.Exit(ERROR_INVALID_ARGS)
+		os.Exit(InvalidArgs)
 	}
 
 	args := flag.Args()
 	result, err := rpn.Evalrpn(args)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error evaluating: %v.\n", err)
-		os.Exit(ERROR_EVALUATING)
+		os.Exit(EvaluationError)
 	} else {
 		fmt.Println(result)
 	}

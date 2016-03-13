@@ -2,7 +2,7 @@ package isomorphic
 
 import "unicode/utf8"
 
-// Returns true only if strings s and t are isomorphic.
+// AreIsomorphic returns true only if strings s and t are isomorphic.
 // Two strings are isomorphic if you can get one of them by replacing all the
 // characters in the other.
 func AreIsomorphic(s, t string) bool {

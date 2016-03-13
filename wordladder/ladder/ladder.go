@@ -18,17 +18,15 @@ import (
 // errors
 const (
 	_ = iota
-	INVALID_ARGS
-	OPEN_DICT
-	LOAD_DICT
+	InvalidArgs
+	OpenDict
+	LoadDict
 )
-
-const DEFAULT_DICT = "/usr/share/dict/words"
 
 var dictfile string
 
 func init() {
-	flag.StringVar(&dictfile, "d", DEFAULT_DICT, "dictionary file. Use - for standard input")
+	flag.StringVar(&dictfile, "d", "/usr/share/dict/words", "dictionary file. Use - for standard input")
 }
 
 func usage() {
@@ -63,7 +61,7 @@ func main() {
 	size := flag.NArg()
 	if size != 2 {
 		fmt.Fprintln(os.Stderr, "Invalid number of arguments.")
-		os.Exit(INVALID_ARGS)
+		os.Exit(InvalidArgs)
 	}
 
 	array := flag.Args()
@@ -76,7 +74,7 @@ func main() {
 		file = os.Stdin
 	} else if file, err = os.Open(dictfile); err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(OPEN_DICT)
+		os.Exit(OpenDict)
 	}
 
 	scanner := bufio.NewScanner(file)
@@ -84,7 +82,7 @@ func main() {
 	file.Close()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error loading dictionary: %v", err)
-		os.Exit(LOAD_DICT)
+		os.Exit(LoadDict)
 	}
 
 	ladder := wordladder.WordLadder(start, end, dict)

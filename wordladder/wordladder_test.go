@@ -31,7 +31,7 @@ func TestWordLadderBasic(t *testing.T) {
 func TestWordLadderNoDict(t *testing.T) {
 	ladder := WordLadder("hit", "cog", nil)
 
-	var want []string = nil
+	var want []string
 	if !strarray.AreEqual(ladder, want) {
 		t.Fatalf("got %v, want %v", ladder, want)
 	}
@@ -40,7 +40,7 @@ func TestWordLadderNoDict(t *testing.T) {
 func TestWordLadderDifferentLength(t *testing.T) {
 	ladder := WordLadder("small", "larger", nil)
 
-	var want []string = nil
+	var want []string
 	if !strarray.AreEqual(ladder, want) {
 		t.Fatalf("got %v, want %v", ladder, want)
 	}
