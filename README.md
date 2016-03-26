@@ -28,7 +28,7 @@ to `[5,6,7,1,2,3,4]`.
 
 **Description:**
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
-Valid operators are +, -, *, / and ^ (power). Each operand may be an number or
+Valid operators are +, -, `*`, / and ^ (power). Each operand may be an number or
 an operator. For example:
 * `["2", "1", "+", "3", "*"]` is `((2 + 1) * 3) = 9`
 * `["4", "13", "5", "/", "+", "10", "*"]` is `(4 + (13 / 5)) * 10 = 66`
@@ -48,8 +48,8 @@ For example, "egg" and "add" are isomorphic, but "foo" and "bar" are not.
 #### Word ladder
 
 **Description:**
-Given two words (*start* and *end*), and a dictionary, find the length of
-shortest transformation sequence from *start* to *end*, such that only one
+Given two words (`start` and `end`), and a dictionary, find the length of
+shortest transformation sequence from `start` to `end`, such that only one
 letter can be changed at a time and each intermediate word must exist in the
 dictionary.
 
