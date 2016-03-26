@@ -1,4 +1,4 @@
-#### Rotate an array
+# Rotate an array
 ## Description of the problem
 
 Rotate an array of `n` elements to the right by `k` steps.
