@@ -19,12 +19,12 @@ to verify two positions of the other array to confirm this.
 
 For example, when scanning the array `s` the first guess is to say the element
 in the middle of `s` is the overall median. In this case `len(s)/2` elements
-are greater than this candidate in as (for `s` is sorted). If `N = len(s)
-+ len(t)` is the total number of elements, we can say that this candidate
+are greater than this candidate in as (for `s` is sorted). If `N = len(s) + len(t)`
+is the total number of elements, we can say that this candidate
 median must be greater than `c = T/2 - len(s)/2` elements from the array `t`.
-Therefore, we only need to verify positions `i = len(t) - c` and `j = len(t)
-- c - 1` in `t`, if they exist. The candidate is indeed the overall median if
-and only if `t[i] <= candidate <= t[j]`.
+Therefore, we only need to verify positions `i = len(t) - c` and
+`j = len(t) - c - 1` in `t`, if they exist. The candidate is indeed the overall
+median if and only if `t[i] <= candidate <= t[j]`.
 
 ### Optimization
 
