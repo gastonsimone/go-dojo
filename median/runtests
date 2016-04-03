@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# This script runs the tests one by one and stops on the first failure.
+# In the first versions I ended up in some infinite loop while trying to solve
+# this problem. This script was useful to diagnose which test was replicating
+# the problem.
+
+t=5s
+
+tests=$(grep '^func Test' median_test.go | sed 's/func //' | sed 's/(.*) {//')
+
+for test in $tests
+do
+	echo "$test"
+	go test -timeout "$t" -run "$test" || exit 1
+done
+
+exit 0

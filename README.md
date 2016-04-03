@@ -54,3 +54,15 @@ letter can be changed at a time and each intermediate word must exist in the
 dictionary.
 
 **Solution**: [wordladder](/wordladder).
+
+#### Median of two sorted arrays
+
+**Description:**
+There are two sorted arrays `s` and `t` of size `m` and `n` respectively. Find
+the median of the two sorted arrays. The overall run time complexity should be
+`O(log(m+n))`.
+
+**Solution**: [median](/median).
+
+**Note**: The best solution I found (that really works! see the tests) runs in
+`O(log(min(m,n)))` on average, and `O(log(m)+log(n))` in the worst case.
