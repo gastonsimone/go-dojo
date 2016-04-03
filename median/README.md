@@ -40,7 +40,8 @@ in the `medianScan` function.
 ### Concurrency
 
 Since the approach to solve this problem is to scan one of the arrays, and then
-scan the other (only if the first scan did not succeed). There is a good
+scan the other (only if the first scan did not succeed) there is a good
 opportunity for concurrency here: Both arrays can be scanned concurrently,
-using goroutines and a simple channel. We only need the result of the first one
-that finishes successfully. This is implemented in the `Median` function.
+using *goroutines* and channels. We only need the result of the first one that
+finishes successfully. I tried this idea, but it was **30x slower** than the
+non-concurrent approach. So I discarded it.
