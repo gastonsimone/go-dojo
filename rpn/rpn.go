@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-var operators = "+-*/^!"
+var operators = "+-*/^"
 
 // Evalrpn is a Reverse Polish Notation calculator.
 // It parses the tokens and returns the result.
