@@ -66,3 +66,13 @@ the median of the two sorted arrays. The overall run time complexity should be
 
 **Note**: The best solution I found (that really works! see the tests) runs in
 `O(log(min(m,n)))` on average, and `O(log(m)+log(n))` in the worst case.
+
+#### Merge intervals
+
+**Description:**
+Given a collection of intervals, merge all overlapping intervals.
+For example:
+* Given: `[1,3], [2,6], [8,10], [15,18]`
+* Result: `[1,6], [8,10], [15,18]`.
+
+**Solution**: [mergeint](/mergeint).
